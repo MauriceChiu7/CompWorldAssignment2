@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>Compworld Assignment 2</title>
+    
+    <script type="text/javascript" src="./assetmanager.js"></script>
+    <script type="text/javascript" src="./gameengine.js"></script>
+    <script type="text/javascript" src="./main.js"></script>
+</head>
+<body>
+    <div>My attempt on making the Gosper Gun.</div>
+    
+    <canvas id="gameWorld" width="800" height="800" style="border: 1px solid black; background: white"></canvas>
+    
+    <p>Refresh Rate (10 ms - 1000 ms per frame): <span id="speedtext"></span></p>
+    
+    <!-- Slider that controls the frame rate. -->
+    <div class="slidecontainer"> 
+        <input type="range" min="10" max="1000" value="100" class="slider" id="speedRange">
+        <input type="button" value="Toggle Grid" id="gridButton">
+        <span id="gridSwitch">ON</span>
+        <input type="button" value="Toggle World Wrapping" id="WWButton">
+        <span id="WWSwitch">OFF</span>
+    </div>
+
+    <script>
+        var slider = document.getElementById("speedRange");
+        var output = document.getElementById("speedtext");
+        output.innerHTML = slider.value; // Display slider value
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+        var gridButton = document.getElementById("gridButton");
+        var gridOut = document.getElementById("gridSwitch");
+        gridButton.onclick = function() {
+            drawGrid = !drawGrid;
+            if (drawGrid) {
+                gridOut.innerHTML = "ON     ";
+            } else {
+                gridOut.innerHTML = "OFF    ";
+            }
+        }
+
+        var WWButton = document.getElementById("WWButton");
+        var WWOut = document.getElementById("WWSwitch");
+        WWButton.onclick = function() {
+            worldwrapping = !worldwrapping;
+            if (worldwrapping) {
+                WWOut.innerHTML = "ON     ";
+            } else {
+                WWOut.innerHTML = "OFF    ";
+            }
+        }
+    </script>
+
+</body>
+</html>
